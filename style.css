@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+body {
+  background: url('https://i.imgur.com/7LvmzEV.jpg') no-repeat center     center fixed;
+  background-size: cover;
+  font-family: 'Indie Flower', cursive;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 5px;
+    width: 320px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+    }
+
+.cell {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 35px;
+      cursor: pointer;
+      border: 2px solid #000;
+}
+
+h1 {
+  text-align: center;
+  font-size: 80px;
+  color: #836953;
+  justify-content: center;
+  align-items: center;
+}
+
+#reset-button {
+  background-color: #69533f;
+  border: none;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  font-size: 13px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 520px;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 55px;
+    text-align: center;
+  }
+
+  #reset-button {
+    margin-top: 500x;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 55px;
+    text-align: center;
+  }
+  
+   #reset-button {
+    margin-top: 500x;
+  }
+}
