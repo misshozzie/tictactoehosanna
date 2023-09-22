@@ -9,10 +9,7 @@ let gameIsLive = true;
 /*----- cached elements -----*/
 const board = document.getElementById("board");
 const message = document.getElementById("message");
-const scoreDisplay = document.getElementById("score");
 const resetButton = document.getElementById("reset-button");
-
-let score = { 'X' : 0, 'O' : 0 };
 
 
 /*----- event listners -----*/
@@ -34,7 +31,7 @@ function handleCellClick(e) {
 	const index = cell.dataset.index;
 
 	if (gameBoard[index] === "" && gameIsLive) {
-		gameBoard[index] === player1;
+		gameBoard[index] = player1;
 		cell.textContent = player1;
 		cell.style.pointerEvents = "none";
 		checkWins();
@@ -42,9 +39,10 @@ function handleCellClick(e) {
 	}
 }
 
-function updateScore(winner) {
-	score[winner] += 1;
-	scoreDisplay.textContent = `Score: X - ${score['X']} : O - ${score['O']}`;
+function disableClick() {
+  Array.from(board.children).forEach(cell => {
+    cell.style.pointerEvents = "none";
+  });
 }
 
 function checkWins() {
@@ -63,20 +61,23 @@ function checkWins() {
 		const [a, b, c] = combination;
 		if (
 			gameBoard[a] &&
-			gameBoard[b] === gameBoard[b] &&
-			gameBoard[c] === gameBoard[c]
+			gameBoard[a] === gameBoard[b] &&
+			gameBoard[a] === gameBoard[c]
 		) {
 			message.textContent = `${player1} wins!`;
 			gameIsLive = false;
+            disableClick();
 			return;
 		}
-	  }
+	}
 
 	  if (!gameBoard.includes("") && gameIsLive) {
 		message.textContent = "No one wins!";
 		gameIsLive = false;
+    disableClick();
 	  }
 	}
+
 
 function createBoard () {
 	for (let i = 0; i < 9; i++) {
